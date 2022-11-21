@@ -3,10 +3,38 @@ body {
 }
 
 .circle {
+    box-sizing: border-box;
     width: 200px;
     height: 200px;
-    background-color: crimson;
+    border-bottom: 100px solid transparent;
+    border-top: 100px solid transparent;
+    border-left: 100px solid transparent;
+    border-right: 100px solid crimson;
     border-radius: 50%;
+    margin: 30px;
+    animation: circle-spin infinite 2s cubic-bezier(.61, -0.01, .38, 1);
+}
+
+.circle.back {
+    animation: circle-spin-back infinite 2s cubic-bezier(.61, -0.01, .38, 1);
+}
+
+@keyframes circle-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circle-spin-back {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
 }
 
 .bin {
@@ -16,6 +44,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
 .container {

@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    background-color: crimson;
+    border-radius: 50%;
+}
+
+.bin {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

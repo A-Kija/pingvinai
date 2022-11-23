@@ -1,8 +1,8 @@
 const obj = {};
 
-const arr = [];
+// const arr = [];
 
-arr.push('Labas', 'Ate', 'Hello');
+// arr.push('Labas', 'Ate', 'Hello');
 
 obj.color = 'crimson';
 
@@ -49,7 +49,19 @@ const result = fun(x => x + 7, 10);
 
 // const fe = arr.forEach(what => what + '---');
 
-const map = arr.map(what => '<i style="color:crimson;">' + what + '</i>');
+
+const arr = [
+    { name: 'Bebras', 'color': 'skyblue', age: 10 },
+    { name: 'Petras', 'color': 'crimson', age: 87 },
+    { name: 'Ona', 'color': 'pink', age: 37 },
+    { name: 'Briedis', 'color': 'black', age: 5 },
+    { name: 'Vilkas', 'color': 'gray', age: 14 }
+];
+
+
+
+
+const map = arr.map(what => '<div style="color:' + what.color + ';">' + what.name + ' <i>' + what.age + '</i></div>');
 
 // for (let i = 0; i < arr.length; i++) {
 //     console.log(arr[i]);
@@ -66,7 +78,7 @@ let html = '';
 
 map.forEach(what => html += what);
 
-console.log(html);
+// console.log(html);
 
 document.querySelector('h1').innerHTML = html;
 

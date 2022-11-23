@@ -52,7 +52,7 @@ const result = fun(x => x + 7, 10);
 
 const arr = [
     { name: 'Bebras', 'color': 'skyblue', age: 10 },
-    { name: 'Petras', 'color': 'crimson', age: 87 },
+    { name: 'bebras', 'color': 'crimson', age: 87 },
     { name: 'Ona', 'color': 'pink', age: 37 },
     { name: 'Briedis', 'color': 'black', age: 5 },
     { name: 'Vilkas', 'color': 'gray', age: 14 }
@@ -60,12 +60,36 @@ const arr = [
 
 
 
+// const filter = arr.filter(what => what.age < 30);
 
-const map = arr.map(what => '<div style="color:' + what.color + ';">' + what.name + ' <i>' + what.age + '</i></div>');
+// const filter = arr.filter(what => what.name != 'Petras');
+
+const filter = arr.filter((_, i) => i != 4);
+
+const map2 = filter.map(what => what.age > 30 ? {...what, color: 'black' } : {...what, color: 'crimson' });
+
+// const map2 = filter.map(what => ({...what, color: 'pink' }));
+
+// map2.sort((a, b) => b.age - a.age);
+
+// map2.sort((a, b) => {
+//     if (a.name > b.name) return 1;
+//     if (a.name < b.name) return -1;
+//     return 0;
+// });
+
+map2.sort((a, b) => a.name.localeCompare(b.name));
+
+
+
+
+const map = map2.map(what => '<div style="color:' + what.color + ';">' + what.name + ' <i><code>' + what.age + '</code></i></div>');
 
 // for (let i = 0; i < arr.length; i++) {
 //     console.log(arr[i]);
 // }
+
+
 
 // console.log(fe);
 

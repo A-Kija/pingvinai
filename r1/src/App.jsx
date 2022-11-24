@@ -6,10 +6,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header" style={{
-         color: 'crimson',
+         color: rand(0, 1) ? 'crimson' : 'skyblue',
          letterSpacing: '18px'
       }}>
-        <Valio/>
+        <Valio spalva="gray" padingas="20px" bg="pink" cross="yellow"/>
+        <Valio spalva="white" padingas="30px" bg="white" cross="orange"/>
         <div>{  rand(1, 7)  }</div> 
         <div>{  8 * 5  }</div> 
       </header>

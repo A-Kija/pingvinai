@@ -1,10 +1,6 @@
+@import './buttons.scss';
 .App {
     text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -24,10 +20,6 @@
     color: white;
 }
 
-.App-link {
-    color: #61dafb;
-}
-
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
@@ -35,17 +27,4 @@
     to {
         transform: rotate(-360deg);
     }
-}
-
-.s {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-}
-
-.s strong {
-    animation: App-logo-spin infinite 3s linear;
-    font-size: 50px;
-    height: 100px;
 }

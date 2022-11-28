@@ -24,9 +24,10 @@ function App() {
   const set42 = () => {
     const meaningOfLife = 42;
     setCount(meaningOfLife); // PRISKYRIMAS
-    const z = {};
-    const x = {...z};
-    const b = JSON.parse(JSON.stringify(z));
+    // kopijavimas
+    // const z = {};
+    // const x = {...z};
+    // const b = JSON.parse(JSON.stringify(z));
   }
 
 

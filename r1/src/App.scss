@@ -28,3 +28,34 @@
         transform: rotate(-360deg);
     }
 }
+
+.cat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    margin: 20px;
+    border: 3px dotted transparent;
+    h2 {
+        letter-spacing: 5px;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+}
+
+.dog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    margin: 20px;
+    border: 3px dashed transparent;
+    border-radius: 20px;
+    h3 {
+        letter-spacing: 5px;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+}

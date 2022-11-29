@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.scss';
 import randColor from './Functions/randColor';
+import rand from './Functions/rand';
+import Sq from './Components/006/Sq';
 // import Cat from './Components/006/Cat';
 // import Dog from './Components/006/Dog';
 
@@ -17,7 +19,12 @@ function App() {
     const [sq, setSq] = useState([]);
 
     const add = () => {
-        setSq(s => [...s, 1]);
+        setSq(s => [...s, 
+            {
+            id: rand(100000, 999999),
+            color: randColor()
+            }
+        ]);
     }
 
 
@@ -28,11 +35,9 @@ function App() {
             <Cat key={i} cat={a}/> :
             <Dog key={i} dog={a}/>
             )} */}
-            <div class="bin">
+            <div className="bin">
                 {
-                    sq.map((_, i) => <div className="sq" style={{
-                        backgroundColor: randColor()
-                    }} key={i}></div>)
+                    sq.map(square => <Sq key={square.id} square={square} setSq={setSq} />)
                 }
             </div>
                 <button onClick={add}>ADD</button>

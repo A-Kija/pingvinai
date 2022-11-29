@@ -71,6 +71,11 @@
         height: 100px;
         margin: 5px;
         border: 1px dashed gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-family: monospace;
         &.blue {
             background-color: skyblue;
             border-color: skyblue;

@@ -3,6 +3,7 @@ import './App.scss';
 import randColor from './Functions/randColor';
 import rand from './Functions/rand';
 import Sq from './Components/006/Sq';
+import { useEffect } from 'react';
 // import Cat from './Components/006/Cat';
 // import Dog from './Components/006/Dog';
 
@@ -16,8 +17,23 @@ import Sq from './Components/006/Sq';
 
 function App() {
 
-    const [sq, setSq] = useState([]);
-    const [cat, setCat] = useState({});
+    const [sq, setSq] = useState(null);
+    // const [cat, setCat] = useState({});
+
+    useEffect(() => {
+        if (null === sq) {
+            const kv = localStorage.getItem('kv');
+            if (null === kv) {
+                setSq([]);
+            } else {
+                setSq(JSON.parse(kv));
+            }
+        } else {
+            localStorage.setItem('kv', JSON.stringify(sq));
+        }
+    }, [sq]);
+
+
 
     const add = () => {
         setSq(s => [...s, 
@@ -28,15 +44,15 @@ function App() {
         ]);
     }
 
-    const write = () => {
-        localStorage.setItem('myCat', JSON.stringify({cat: 'Big and Black', color: 'crimson'}));
-    }
-    const read = () => {
-        setCat(JSON.parse(localStorage.getItem('myCat')));
-    }
-    const remove = () => {
-        localStorage.removeItem('myCat');
-    }
+    // const write = () => {
+    //     localStorage.setItem('myCat', JSON.stringify({cat: 'Big and Black', color: 'crimson'}));
+    // }
+    // const read = () => {
+    //     setCat(JSON.parse(localStorage.getItem('myCat')));
+    // }
+    // const remove = () => {
+    //     localStorage.removeItem('myCat');
+    // }
 
 
     return (
@@ -48,14 +64,14 @@ function App() {
             )} */}
             <div className="bin">
                 {
-                    sq.map(square => <Sq key={square.id} square={square} setSq={setSq} />)
+                    sq?.map(square => <Sq key={square.id} square={square} setSq={setSq} />)
                 }
             </div>
-                <h2 style={{color: cat?.color}}>{cat?.cat}</h2>
+                {/* <h2 style={{color: cat?.color}}>{cat?.cat}</h2> */}
                 <button onClick={add}>ADD</button>
-                <button onClick={write}>WRITE</button>
+                {/* <button onClick={write}>WRITE</button>
                 <button onClick={read}>READ</button>
-                <button onClick={remove}>REMOVE</button>
+                <button onClick={remove}>REMOVE</button> */}
             </div>
         </div>
     );

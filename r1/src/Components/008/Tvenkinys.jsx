@@ -4,8 +4,8 @@ function Tvenkinys({seaPlaners}) {
 
     return (
         <>
+            <Daiktas show={0} seaPlaners={seaPlaners} />
             <Daiktas show={1} seaPlaners={seaPlaners} />
-            <Daiktas show={2} seaPlaners={seaPlaners} />
         </>
     )
 }

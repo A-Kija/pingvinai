@@ -18,6 +18,7 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    position: relative;
 }
 
 @keyframes App-logo-spin {
@@ -111,4 +112,10 @@ ul {
         font-size: 20px;
         line-height: 1.2;
     }
+}
+
+.top {
+    position: absolute;
+    top: 0;
+    background-color: #ffa500cc;
 }

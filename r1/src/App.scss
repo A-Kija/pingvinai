@@ -90,3 +90,25 @@
     transition: all 0.5s;
     margin: 100px;
 }
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    li {
+        width: 200px;
+        margin: 10px;
+        padding: 5px;
+        border: 1px solid white;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+    }
+    h2 {
+        height: 50px;
+        overflow: hidden;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import './App.scss';
 import axios from 'axios';
+import Book from './Components/jb/Book';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
     useEffect(() => {
         axios.get('https://in3.dev/knygos/')
-        .then(res => setBooks(res.data.sort((a, b) => a.price - b.price)))
+        .then(res => setBooks(res.data))
 
 
         // fetch('https://in3.dev/knygos/')
@@ -20,6 +21,14 @@ function App() {
         // .then((data) => setBooks(data));
 
     }, []);
+
+    const sort09 = () => {
+        setBooks(b => [...b].sort((a, b) => a.price - b.price));
+    }
+
+    const sort90 = () => {
+        setBooks(b => [...b].sort((a, b) => b.price - a.price));
+    }
 
     return (
         <div className="App">
@@ -31,13 +40,13 @@ function App() {
                 <button onClick={() => setRo(true)}>GO</button>
                 <button onClick={() => setRo(false)} style={{transform: 'rotate(90deg)'}}>GO</button>
                 </div> */}
+                <div class="bin">
+                    <button onClick={sort09}>Sort price 0-9</button>
+                    <button onClick={sort90}>Sort price 9-0</button>
+                </div>
                 <ul>
                     {
-                        books?.map(b => <li key={b.id}>
-                            <img src={b.img} alt="book"></img>
-                            <h2>{b.title}</h2>
-                            <h2>{b.price}</h2>
-                        </li>)
+                        books?.map(b => <Book key={b.id} book={b} />)
                     }
                 </ul>
             </div>

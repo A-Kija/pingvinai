@@ -105,12 +105,33 @@ ul {
         justify-content: center;
         align-items: center;
         list-style: none;
+        position: relative;
     }
     h2 {
         height: 50px;
         overflow: hidden;
         font-size: 20px;
         line-height: 1.2;
+    }
+    h3 {
+        font-size: 16px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: skyblue;
+    }
+    .id {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid skyblue;
+        border-radius: 50%;
+        color: coral;
+        font-size: 14px;
     }
 }
 

@@ -127,3 +127,15 @@ if (!($kintamasis1 * $kintamasis2)) {
 } else {
     echo round($kintamasis2 / $kintamasis1, 2);
 }
+
+$str = 'AČiŪ';
+
+echo '<br>';
+
+echo strlen($str);
+
+echo '<br>';
+
+
+
+echo mb_strlen($str);

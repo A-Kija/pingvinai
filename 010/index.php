@@ -112,5 +112,18 @@ echo $print;
 // }
 
 
+$kintamasis1 = rand(0, 4);
+$kintamasis2 = rand(0, 4);
+echo '<br>';
 
+echo "$kintamasis1 ir $kintamasis2";
 
+echo '<br>';
+
+if (!($kintamasis1 * $kintamasis2)) {
+    echo 'Dalyba negalima nes 0';
+} elseif ($kintamasis1 > $kintamasis2) {
+    echo round($kintamasis1 / $kintamasis2, 2);
+} else {
+    echo round($kintamasis2 / $kintamasis1, 2);
+}

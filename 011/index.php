@@ -84,14 +84,21 @@ print_r($mas1);
 
 arsort($mas1);
 
-$mas1['777'] = 'Zebras';
+$mas1['777'] = [777, 999];
 
-arsort($mas1);
+// arsort($mas1);
 
 print_r($mas1);
 
-foreach($mas1 as $index => $value) {
-    echo "<h2>$index: <i>$value</i></h2>";
+foreach ($mas1 as $index => $value) {
+    if (!is_array($value)) {
+        echo "<h2>$index: <i>$value</i></h2>";
+    }
+    else {
+        foreach ($value as $index2 => $value2) {
+            echo "<h2>$index2: <i>$value2</i></h2>";
+        }
+    }
 }
 
 

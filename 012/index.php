@@ -21,7 +21,7 @@ $arr = ['Bebras', 'Zebras', 'Avinas', [1, 'Jo' => 2, 3]];
 
 define('BEBRAS', 'Bebrai jėga!');
 
-@define('BEBRAS', '444444444444444');
+// @define('BEBRAS', '444444444444444');
 
 
 define('KITA', [1, 2, 3]);

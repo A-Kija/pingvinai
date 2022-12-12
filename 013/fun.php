@@ -16,10 +16,10 @@ $penki = 5;
 
 
   
-echo sudeti($vienas, $penki, 88);
+// echo sudeti($vienas, $penki, 88);
 echo '<pre><br>';
 // echo $vienas;
-echo '<br>';
+// echo '<br>';
 
 function foo($reset = false) {
     static $index = 0;
@@ -40,7 +40,7 @@ function foo($reset = false) {
 // foo();
 // foo();
 
-echo '<br><br><br>';
+// echo '<br><br><br>';
 
 function recursive($num){
     echo $num, '<br>';
@@ -51,7 +51,7 @@ function recursive($num){
     return;
 }
 $startNum = 1;
-recursive($startNum);
+// recursive($startNum);
 
 $mas = [
     1,
@@ -78,7 +78,7 @@ $mas = [
     ]
 ];
 
-print_r($mas);
+// print_r($mas);
 
 function sum(array $a) : int
 {
@@ -90,9 +90,52 @@ function sum(array $a) : int
             $s += $val;
         }
     }
-    echo "<h2>$s</h2>";
+    // echo "<h2>$s</h2>";
     return $s;
 }
 
 echo '<br>';
 echo sum($mas);
+
+
+
+$an = function() {
+    echo '<h2>anonimas</h2>';
+};
+
+function darViena(closure $cb) : void
+{
+    echo '<h2>vidus</h2>';
+    $cb();
+}
+
+darViena($an);
+
+darViena(function() {
+    echo '<h2>anonimas2</h2>';
+});
+
+$masyvas = [
+    ['a','d'],
+    ['v','y'],
+    ['z','c'],
+    ['s','r'],
+];
+
+function sortiravimas($a, $b){
+    return $a[1] <=> $b[1];
+};
+
+usort($masyvas, 'sortiravimas');
+
+// print_r($masyvas);
+
+
+$isorinis = 'black';
+
+$bebras = function() use ($isorinis) : void {
+    echo "<h2>anonimas $isorinis</h2>";
+};
+
+
+$bebras();

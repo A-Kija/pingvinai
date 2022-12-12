@@ -63,5 +63,7 @@ foreach ($mas as $index => &$val) {
     }
 }
 
+$mas = array_values($mas);
+
 print_r($rez);
 print_r($mas);

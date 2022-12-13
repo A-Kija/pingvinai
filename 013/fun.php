@@ -133,9 +133,14 @@ usort($masyvas, 'sortiravimas');
 
 $isorinis = 'black';
 
-$bebras = function() use ($isorinis) : void {
-    echo "<h2>anonimas $isorinis</h2>";
-};
+// $bebras = function() use (&$isorinis) : string {
+//     return "<h2>anonimas $isorinis</h2>";
+// };
 
 
-$bebras();
+$bebras = fn() => "<h2>anonimas $isorinis</h2>";
+
+
+$isorinis = 'crimson';
+
+echo $bebras();

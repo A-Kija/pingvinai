@@ -1,0 +1,11 @@
+.sq {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border: 3px dotted gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: monospace;
+}

@@ -5,6 +5,7 @@ session_start();
 // POST scenarijus
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $rez = $_POST['x'] + $_POST['y'];
+    $_SESSION['saugau'] = 'Dramblys';
     $_SESSION['mano_suma'] = $rez;
     header('Location: http://localhost/pingvinai/015/post.php');
     die;

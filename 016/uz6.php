@@ -4,6 +4,7 @@ function h1(string $text) : string
 {
     return '<h1 style="display: inline; color: crimson;">'.$text.'</h1>';
 }
+
 ?>
 
 
@@ -19,5 +20,11 @@ function h1(string $text) : string
     <?= preg_replace_callback('/(\d{2})(\d+)/', function($d) {
     return h1($d[1]).$d[2];
     }, md5(time())) ?>
+    <br>
+    <?= md5(md5('123')) ?>
+    <?= sha1('123') ?>
+    <br>
+    <?= md5('ačiū') ?>
+    <?= sha1('124') ?>
 </body>
 </html>

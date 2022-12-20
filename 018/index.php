@@ -4,11 +4,12 @@ echo '<pre>';
 require __DIR__ . '/Bebras.php';
 
 
-$bebras1 = new Bebras;
-$bebras2 = new Bebras;
+$bebras1 = new Bebras('crimson');
+$bebras2 = new Bebras('green');
 
 
-
+print_r($bebras1);
+print_r($bebras2);
 
 echo '<h1>'. $bebras1->color  .'</h1>';
 // echo '<h1>'. $bebras1->age  .'</h1>';
@@ -34,5 +35,4 @@ echo '<br>';
 echo $bebras2->color();
 echo '<br>';
 
-print_r($bebras1);
-print_r($bebras2);
+

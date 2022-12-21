@@ -7,7 +7,6 @@ require __DIR__ . '/Bebras.php';
 $bebras1 = new Bebras('crimson');
 $bebras2 = new Bebras('green');
 
-
 print_r($bebras1);
 print_r($bebras2);
 

@@ -7,11 +7,16 @@ class Bebras {
     private $isLive = true;
 
 
-    private function __construct($c)
+    public function __construct($c)
     {
         echo '<h1 style="color:'.$c.';">SUKURTA</h1>';
         $this->age = rand(1, 18);
         $this->color = $c;
+    }
+
+    public function __destruct()
+    {
+        echo '<h1>GONE</h1>';
     }
 
     public function age() : string

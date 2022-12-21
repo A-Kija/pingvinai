@@ -1,6 +1,5 @@
 <?php
 
-
 $data = [
     ['id' => rand(1000000, 10000000), 'name' => 'Bebras', 'color' => 'brown', 'trees' => 10],
     ['id' => rand(1000000, 10000000), 'name' => 'Briedis', 'color' => 'crimson', 'trees' => 10],

@@ -33,5 +33,3 @@ echo $bebras1->color();
 echo '<br>';
 echo $bebras2->color();
 echo '<br>';
-
-

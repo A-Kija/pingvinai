@@ -1,6 +1,10 @@
 <?php
 echo '<pre>';
+
+require __DIR__ . '/Miskas.php';
+require __DIR__ . '/Zveris.php';
 require __DIR__ . '/Briedis.php';
+
 
 
 $briedis1 = new Briedis('crimson');

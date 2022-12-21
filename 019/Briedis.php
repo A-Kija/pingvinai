@@ -1,11 +1,20 @@
 <?php
 
-class Briedis {
+class Briedis extends Zveris {
 
-    private $color = 'brown';
-    private $age = 14;
-    private $isLive = true;
+    public $color = 'brown';
+    public $age = 14;
+    public $isLive = true;
+    public $browse = 'TIK TOK';
+   
 
+    
+    public function __construct()
+    {
+        echo $this->has;
+    }
+    
+    
     public function __get($prop)
     {
         

@@ -11,7 +11,8 @@ class Briedis extends Zveris {
     
     public function __construct()
     {
-        echo $this->has;
+        parent::__construct();
+        echo '<h1>Briedžio konstruktorius</h1>';
     }
     
     

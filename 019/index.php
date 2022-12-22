@@ -18,6 +18,8 @@ echo '<br>';
 
 // echo $briedis1;
 
+
+
 echo $briedis1('GERAS'); 
 
 print_r($briedis1);

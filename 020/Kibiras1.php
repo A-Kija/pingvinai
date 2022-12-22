@@ -1,6 +1,6 @@
 <?php
 
-class Kibiras1 extends Duobe {
+class Kibiras1 extends Duobe implements Kiauras, Medziaga {
 
     protected $akmenuKiekis;
     protected $color;
@@ -33,6 +33,15 @@ class Kibiras1 extends Duobe {
         return true;
     }
 
+    public function arKiauras() : bool
+    {
+        return false;
+    }
+
+    public function isKoPadarytas(): string
+    {
+        return 'Plastmasė';
+    }
 }
 
 

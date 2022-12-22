@@ -1,9 +1,18 @@
 <?php
 
-class Duobe {
+abstract class Duobe {
 
-    public function ispilti() 
+    // public function ispilti() :void 
+    // {
+    //     $this->akmenuKiekis = 0;
+    // }
+
+    public function arGili() : bool
     {
-        $this->akmenuKiekis = 0;
+        return true;
     }
+
+    abstract public function ispilti(array $b) :bool;
+    
+
 }

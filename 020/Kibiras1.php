@@ -26,6 +26,13 @@ class Kibiras1 extends Duobe {
         echo '<h1 style="color: '.$this->color.';">Pririnkta: '.$this->akmenuKiekis.'</h1>';
     }
 
+    public function ispilti(array $x) :bool
+    {
+        $this->akmenuKiekis = 0;
+
+        return true;
+    }
+
 }
 
 

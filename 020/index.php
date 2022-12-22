@@ -19,7 +19,7 @@ $k2->prideti1Akmeni();
 $k1->pridetiDaugAkmenu(8);
 $k1->prideti1Akmeni();
 
-$k3->ispilti();
+$k3->ispilti([]);
 
 $k1->kiekPririnktaAkmenu();
 $k2->kiekPririnktaAkmenu();

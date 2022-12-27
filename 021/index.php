@@ -1,13 +1,22 @@
 <?php
 
 
-require __DIR__ . '/Kibiras2.php';
-require __DIR__ . '/Cart.php';
-require __DIR__ . '/S1.php';
-require __DIR__ . '/S2.php';
+// require __DIR__ . '/Kibiras2.php';
+// require __DIR__ . '/Cart.php';
+// require __DIR__ . '/S1.php';
+// require __DIR__ . '/S2.php';
+require __DIR__ . '/Motina.php';
+require __DIR__ . '/Agota.php';
+require __DIR__ . '/Jonas.php';
+require __DIR__ . '/Vaikas.php';
+
+$v = new Vaikas;
+
+$v->myLovesName();
 
 
-S2::printA();
+
+// S2::printA();
 
 
 // $c1 = Cart::getCart();

@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: http://localhost/pingvinai/login/login.php');
         die;
     }
-
     $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
     foreach($users as $user) {
@@ -20,6 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     header('Location: http://localhost/pingvinai/login/login.php?error');
+    die;
+}
+
+
+if (isset($_SESSION['user'])) {
+    header('Location: http://localhost/pingvinai/login/');
     die;
 }
 

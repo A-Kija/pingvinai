@@ -2,29 +2,37 @@
 
 
 require __DIR__ . '/Kibiras2.php';
-
-Kibiras2::akmenuKiekisVisuoseKibiruose();
-
-
-$k1 = new Kibiras2;
-$k2 = new Kibiras2;
-$k3 = new Kibiras2;
+require __DIR__ . '/Cart.php';
 
 
-$k2->prideti1Akmeni();
-$k3->prideti1Akmeni();
-$k2->prideti1Akmeni();
-$k3->prideti1Akmeni();
-$k2->prideti1Akmeni();
-$k1->pridetiDaugAkmenu(8);
+$c1 = Cart::getCart();
+$c2 = Cart::getCart();
+
+echo '<h2>' . $c1->id . '</h2>';
+echo '<h2>' . $c2->id . '</h2>';
+
+// Kibiras2::akmenuKiekisVisuoseKibiruose();
 
 
-$k1->kiekPririnktaAkmenu();
-$k2->kiekPririnktaAkmenu();
-$k3->kiekPririnktaAkmenu();
+// $k1 = new Kibiras2;
+// $k2 = new Kibiras2;
+// $k3 = new Kibiras2;
 
-$k4 = new Kibiras2;
 
-$k4->pridetiDaugAkmenu(7);
+// $k2->prideti1Akmeni();
+// $k3->prideti1Akmeni();
+// $k2->prideti1Akmeni();
+// $k3->prideti1Akmeni();
+// $k2->prideti1Akmeni();
+// $k1->pridetiDaugAkmenu(8);
 
-Kibiras2::akmenuKiekisVisuoseKibiruose();
+
+// $k1->kiekPririnktaAkmenu();
+// $k2->kiekPririnktaAkmenu();
+// $k3->kiekPririnktaAkmenu();
+
+// $k4 = new Kibiras2;
+
+// $k4->pridetiDaugAkmenu(7);
+
+// Kibiras2::akmenuKiekisVisuoseKibiruose();

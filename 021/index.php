@@ -3,13 +3,18 @@
 
 require __DIR__ . '/Kibiras2.php';
 require __DIR__ . '/Cart.php';
+require __DIR__ . '/S1.php';
+require __DIR__ . '/S2.php';
 
 
-$c1 = Cart::getCart();
-$c2 = Cart::getCart();
+S2::printA();
 
-echo '<h2>' . $c1->id . '</h2>';
-echo '<h2>' . $c2->id . '</h2>';
+
+// $c1 = Cart::getCart();
+// $c2 = Cart::getCart();
+
+// echo '<h2>' . $c1->id . '</h2>';
+// echo '<h2>' . $c2->id . '</h2>';
 
 // Kibiras2::akmenuKiekisVisuoseKibiruose();
 

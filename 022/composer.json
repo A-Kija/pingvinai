@@ -1,0 +1,14 @@
+{
+    "name": "arvyd/022",
+    "autoload": {
+        "psr-4": {
+            "": "",
+            "Gilus\\Miskas\\Paupy\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "A-Kija",
+        "email": "arvydas.kijakauskas@gmail.com"
+    }],
+    "require": {}
+}

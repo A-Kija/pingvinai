@@ -8,10 +8,6 @@ $s150 = new Stikline(150);
 $s200 = new Stikline(200);
 
 
-
-
-
-
 $s100
 ->ipilti($s150
 ->ipilti($s200

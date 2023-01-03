@@ -3,6 +3,7 @@ namespace Front;
 
 use Front\Controllers\Calculator;
 use Front\Controllers\Grybas;
+use Front\Controllers\Api;
 
 class App {
 
@@ -45,6 +46,14 @@ class App {
 
         if ($url[0] == 'grybai' && $url[1] == 'delete' && count($url) == 3 && $method == 'POST') {
             return (new Grybas)->delete($url[2]);
+        }
+
+        if ($url[0] == 'users' && $url[1] == 'all' && count($url) == 2 && $method == 'GET') {
+            return (new Api)->allUsers();
+        }
+
+        if ($url[0] == 'users' && $url[1] == 'js' && count($url) == 2 && $method == 'GET') {
+            return (new Api)->jsUsers();
         }
 
         return '404 NOT FOUND';

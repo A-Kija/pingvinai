@@ -12,7 +12,7 @@ class GrybasApi {
         header('Content-Type: application/json; charset=utf-8');
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET');
-        return json_encode(['grybai' => $grybai]);
+        return json_encode(['grybai' => array_values($grybai)]);
     }
 
 
@@ -22,10 +22,7 @@ class GrybasApi {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: POST');
         $rawData = file_get_contents("php://input");
-        // json_decode($rawData);
-        var_dump($rawData);
         (new FR('grybai'))->create(json_decode($rawData, 1));
-        // return App::redirect('grybai');
         return '';
     }
 
@@ -38,14 +35,21 @@ class GrybasApi {
 
     public function update($id)
     {
-        (new FR('grybai'))->update($id, $_POST);
-        return App::redirect('grybai');
+        header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: PUT');
+        $rawData = file_get_contents("php://input");
+        (new FR('grybai'))->update($id, json_decode($rawData, 1));
+        return '';
     }
 
     public function delete($id)
     {
+        header('Content-Type: application/json; charset=utf-8');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: DELETE');
         (new FR('grybai'))->delete($id);
-        return App::redirect('grybai');
+        return '';
     }
 
 }

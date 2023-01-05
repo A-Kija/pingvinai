@@ -15,32 +15,7 @@ class App {
         return self::router($url);
     }
 
-    public function cors() {
     
-        // Allow from any origin
-        if (isset($_SERVER['HTTP_ORIGIN'])) {
-            // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
-            // you want to allow, and if so:
-            header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-            header('Access-Control-Allow-Credentials: true');
-            header('Access-Control-Max-Age: 86400');    // cache for 1 day
-        }
-        
-        // Access-Control headers are received during OPTIONS requests
-        if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-            
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-                // may also be using PUT, PATCH, HEAD etc
-                header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-            
-            if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-                header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-        
-            exit(0);
-        }
-        
-        echo "You have CORS!";
-    }
 
     private static function router(array $url)
     {
@@ -101,16 +76,12 @@ class App {
             return (new GrybasApi)->save();
         }
 
-        if ($url[0] == 'grybai' && $url[1] == 'edit' && count($url) == 3 && $method == 'GET') {
-            return (new Grybas)->edit($url[2]);
+        if ($url[0] == 'api' && $url[1] == 'grybai' && $url[2] == 'update' && count($url) == 4 && $method == 'PUT') {
+            return (new GrybasApi)->update($url[3]);
         }
 
-        if ($url[0] == 'grybai' && $url[1] == 'update' && count($url) == 3 && $method == 'POST') {
-            return (new Grybas)->update($url[2]);
-        }
-
-        if ($url[0] == 'grybai' && $url[1] == 'delete' && count($url) == 3 && $method == 'POST') {
-            return (new Grybas)->delete($url[2]);
+        if ($url[0] == 'api' && $url[1] == 'grybai' && $url[2] == 'delete' && count($url) == 4 && $method == 'DELETE') {
+            return (new GrybasApi)->delete($url[3]);
         }
 
 

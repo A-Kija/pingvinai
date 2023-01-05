@@ -1,36 +1,51 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useState } from "react";
 
-function Create({setLastUpdate}) {
+function Edit({setLastUpdate, editMushroom, setEditMushroom}) {
 
+
+    
     const [title, setTitle] = useState('');
     const [color, setColor] = useState('#00FF00');
     const [weight, setWeight] = useState('0');
 
-    const add = () => {
+    useEffect(() => {
+        if (null === editMushroom) {
+            return;
+        }
+        setTitle(editMushroom.title);
+        setColor(editMushroom.color);
+        setWeight(editMushroom.weight);
+
+    }, [editMushroom])
+
+    const edit = () => {
         const mushroom = {
             title,
             color,
             weight: parseInt(weight)
         }
-        axios.post('http://front.lt/api/grybai/save', mushroom)
+        axios.put('http://front.lt/api/grybai/update/' + editMushroom.id, mushroom)
         .then(() => {
             setLastUpdate(Date.now());
-            setTitle('');
-            setColor('#00FF00');
-            setWeight('0');
+            setEditMushroom(null);
         })
     }
 
-    return (
+    if (null === editMushroom) {
+        return null;
+    }
+
+    return (         
         <>
-        <h2>Naujas Grybas</h2>
+        <h2>Redaguoti Grybą</h2>                
         <div>Pavadinimas <input type="text" value={title} onChange={e => setTitle(e.target.value)}></input></div>
         <div>Spalva <input type="color" value={color} onChange={e => setColor(e.target.value)}></input></div>
         <div>Svoris gramais <input type="number" value={weight} onChange={e => setWeight(e.target.value)}></input></div>
-        <div><button onClick={add}>OK</button></div>
+        <div><button onClick={edit}>OK</button></div>
         </>
     )
 
 }
-export default Create;
+export default Edit;

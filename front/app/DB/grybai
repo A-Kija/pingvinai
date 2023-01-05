@@ -1,1 +1,1 @@
-a:3:{i:6;a:4:{s:5:"title";s:8:"Valgomas";s:5:"color";s:7:"#fbff00";s:6:"weight";i:5;s:2:"id";i:10;}i:11;a:4:{s:5:"title";s:5:"Geras";s:5:"color";s:7:"#000000";s:6:"weight";s:3:"100";s:2:"id";i:15;}i:12;a:4:{s:5:"title";s:10:"nevalgomas";s:5:"color";s:7:"#ed12be";s:6:"weight";i:4;s:2:"id";i:16;}}
+a:2:{i:6;a:4:{s:5:"title";s:8:"Valgomas";s:5:"color";s:7:"#fbff00";s:6:"weight";i:5;s:2:"id";i:10;}i:11;a:4:{s:5:"title";s:12:"Geras Blogas";s:5:"color";s:7:"#333555";s:6:"weight";s:3:"555";s:2:"id";i:15;}}

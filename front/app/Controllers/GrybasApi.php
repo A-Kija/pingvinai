@@ -23,7 +23,7 @@ class GrybasApi {
         header('Access-Control-Allow-Methods: POST');
         $rawData = file_get_contents("php://input");
         (new FR('grybai'))->create(json_decode($rawData, 1));
-        return '';
+        return 'SAVE OK';
     }
 
     public function edit($id)
@@ -40,7 +40,7 @@ class GrybasApi {
         header('Access-Control-Allow-Methods: PUT');
         $rawData = file_get_contents("php://input");
         (new FR('grybai'))->update($id, json_decode($rawData, 1));
-        return '';
+        return 'EDIT OK';
     }
 
     public function delete($id)
@@ -49,7 +49,7 @@ class GrybasApi {
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: DELETE');
         (new FR('grybai'))->delete($id);
-        return '';
+        return 'DELETE OK';
     }
 
 }

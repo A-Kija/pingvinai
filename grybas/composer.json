@@ -1,0 +1,16 @@
+{
+    "name": "arvyd/front",
+    "description": "Very nice",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Front\\": "app/",
+            "App\\DB\\": "app/"
+        }
+    },
+    "authors": [{
+        "name": "A-Kija",
+        "email": "arvydas.kijakauskas@gmail.com"
+    }],
+    "require": {}
+}

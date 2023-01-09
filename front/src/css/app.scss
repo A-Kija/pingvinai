@@ -3,3 +3,14 @@ $c: skyblue;
 h1 {
     color: $c;
 }
+
+h2 {
+    margin: 20px;
+    padding: 10px;
+    &.ok {
+        background-color: aquamarine;
+    }
+    &.error {
+        background-color: crimson;
+    }
+}

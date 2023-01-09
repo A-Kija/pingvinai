@@ -10822,3 +10822,14 @@ textarea.form-control-lg {
 h1, .h1 {
   color: skyblue;
 }
+
+h2, .h2 {
+  margin: 20px;
+  padding: 10px;
+}
+h2.ok, .ok.h2 {
+  background-color: aquamarine;
+}
+h2.error, .error.h2 {
+  background-color: crimson;
+}

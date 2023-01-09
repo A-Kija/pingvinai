@@ -9,4 +9,9 @@
     <link rel="stylesheet" href="<?= URL . 'app.css' ?>">
 </head>
 <body>
+    <?php if(isset($message)) :?>
+
+    <h2 class="<?= $message['type'] ?>"><?= $message['text'] ?></h2>
+
+    <?php endif ?>
     

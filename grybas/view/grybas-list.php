@@ -12,6 +12,12 @@
     </form>
 </li>
 
+<style contenteditable="true" style="display: block;">
+    h1 {
+        color: crimson;
+    }
+</style>
+
 
 <?php endforeach ?>
 

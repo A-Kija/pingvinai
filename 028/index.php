@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = '127.0.0.1';
 $db   = 'miskas';
 $user = 'root';
@@ -96,6 +97,9 @@ $trees = $stmt->fetchAll();
                         Plant Tree
                     </div>
                     <div class="card-body">
+                        <div>
+                            <pre><code><?= $_SESSION['csql'] ?? '' ?></code></pre>
+                        </div>
                         <form action="http://localhost/pingvinai/028/create.php" method="post">
                             <div class="mb-3">
                                 <label class="form-label">Title</label>
@@ -114,6 +118,46 @@ $trees = $stmt->fetchAll();
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-outline-warning m-3">Plant Tree</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card m-4">
+                    <div class="card-header">
+                        Grow Tree
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <pre><code><?= $_SESSION['esql'] ?? '' ?></code></pre>
+                        </div>
+                        <form action="http://localhost/pingvinai/028/edit.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">height</label>
+                                <input type="text" name="height" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ID</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-success m-3">Grow Tree</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card m-4">
+                    <div class="card-header">
+                        Cut Tree
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <pre><code><?= $_SESSION['dsql'] ?? '' ?></code></pre>
+                        </div>
+                        <form action="http://localhost/pingvinai/028/delete.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">ID</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-danger m-3">Cut Tree</button>
                         </form>
                     </div>
                 </div>

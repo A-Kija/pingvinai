@@ -19,16 +19,32 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 // SELECT column1, column2, ...
 // FROM table_name;
 
+// INNER
+// SELECT column_name(s)
+// FROM table1
+// INNER JOIN table2
+// ON table1.column_name = table2.column_name;
+
+
+$sql = "
+    SELECT t.id, t.title, types.title AS type, height
+    FROM trees AS t
+    RIGHT JOIN types
+    ON t.type_id = types.id
+";
+
+
+
 // $sql = "
 //     SELECT id, title, height, type
 //     FROM trees
 // ";
 
-$sql = "
-    SELECT id, title, height, type
-    FROM trees
-    ORDER BY title, height DESC
-";
+// $sql = "
+//     SELECT id, title, height
+//     FROM trees
+//     ORDER BY title, height DESC
+// ";
 
 // $sql = "
 //     SELECT id, title, height, type
@@ -75,6 +91,35 @@ $stmt = $pdo->query($sql);
 
 $trees = $stmt->fetchAll();
 
+
+//SUM
+// SELECT SUM(column_name)
+// FROM table_name
+// WHERE condition;
+
+$sql = "
+    SELECT SUM(height) AS sum, AVG(height) AS avg, COUNT(id) AS `all`
+    FROM trees
+";
+
+$stmt = $pdo->query($sql);
+
+$ag = $stmt->fetch();
+
+
+$sql = "
+    SELECT types.title, SUM(height) AS sum, COUNT(t.id) AS `count`
+    FROM trees AS t
+    INNER JOIN types
+    ON t.type_id = types.id
+    GROUP BY types.title
+";
+
+$stmt = $pdo->query($sql);
+
+$group = $stmt->fetchAll();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,10 +156,10 @@ $trees = $stmt->fetchAll();
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Type</label>
-                                <select class="form-select" name="type">
+                                <select class="form-select" name="type_id">
                                     <option value="1">Lapuotis</option>
                                     <option value="2">Spygliuotis</option>
-                                    <option value="3">Palmė</option>
+                                    <option value="5">Palmė</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-outline-warning m-3">Plant Tree</button>
@@ -177,10 +222,20 @@ $trees = $stmt->fetchAll();
                                 <b>ID: <?= $tree['id'] ?? '*' ?></b>
                                 <h2 style="display: inline-block;"><?= $tree['title'] ?></h2>
                                 <i><?= $tree['height'] ?? '*' ?>m.</i>
-                                <u><?= (['Lapuotis', 'Spygliuotis', 'Palmė'][($tree['type'] ?? '-1') - 1]) ?? '*'  ?></u>
+                                <u><?= $tree['type'] ?? '*'  ?></u>
                             </li>
                             <?php endforeach ?>
                         </ul>
+                        <ul class="list-group mt-4">
+                            <?php foreach ($group as $type) : ?>
+                            <li class="list-group-item">
+                                <b>TYPE: <?= $type['title'] ?? '*' ?></b>
+                                <u><?= $type['count'] ?? '*'  ?>vnt</u>
+                                <u><?= $type['sum'] ?? '*'  ?>m</u>
+                            </li>
+                            <?php endforeach ?>
+                        </ul>
+                        <h3 class="m-3">ALL: <?= $ag['all'] ?>vnt, AVG: <?= $ag['avg'] ?>m, SUM: <?= $ag['sum'] ?>m</h3>
                     </div>
                 </div>
             </div>

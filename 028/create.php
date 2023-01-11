@@ -26,7 +26,7 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 
 $sql = "
     INSERT INTO `trees`
-    (title, height, type)
+    (title, height, type_id)
     VALUES (:t, :h, :type)
 ";
 $_SESSION['csql'] = $sql;
@@ -35,7 +35,7 @@ $_SESSION['csql'] = $sql;
 // $pdo->query($sql);
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    'type' => $_POST['type'],
+    'type' => $_POST['type_id'],
     'h' => $_POST['height'],
     't' => $_POST['title']
 ]);

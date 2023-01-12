@@ -28,7 +28,7 @@ $pdo = new PDO($dsn, $user, $pass, $options);
 
 $sql = "
     UPDATE trees
-    SET height = ?
+    SET height = ? 
     WHERE id = ?
 ";
 

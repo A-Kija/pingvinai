@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZooController as Zoo;
-
+use App\Http\Controllers\CalcController as Calc;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +19,20 @@ Route::get('/', function () {
 });
 
 Route::get('/zoo/enter/{id}/{id2}', [Zoo::class, 'enter']);
+
+Route::get('/zoo/show/{number}', [Zoo::class, 'showAnimal'])->name('animalistic');
+
+
 Route::get('/zoo/exit', fn() => 'Ate');
 
 
+
+Route::get('/calc/{x}/{y}', [Calc::class, 'do']);
+
+
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -12,4 +12,15 @@ class ZooController extends Controller
         
         return 'Versija: '. $request->v.$request->bb .' Labas iš kontrolerio Nr.: ' . $id.$a;
     }
+
+    public function showAnimal($number)
+    {
+        $list = ['pink', 'crimson', 'skyblue', 'coral'];
+        
+        return view('animals.one', [
+            'number' => $number,
+            'colors' => $list
+        ]);
+    }
+
 }

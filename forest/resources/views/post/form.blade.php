@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1>POST FORM</h1>
-                    <h3>result: {{$sum}}</h3>
+                    <h3 data-no="result: no result">result: {{$sum}}</h3>
 
                     @if(Session::has('status'))
                     <h2 class="alert alert-success">{{ Session::get('status') }}</h2>
@@ -35,9 +35,9 @@
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-outline-warning m-1">Sum it!</button>
-                            <button type="reset" class="btn btn-outline-warning m-1">Clear</button>
+                            <button type="button" id="reset" class="btn btn-outline-warning m-1">Clear</button>
                         </div>
-                        @csrf
+                        {{-- @csrf --}}
                     </form>
                 </div>
             </div>

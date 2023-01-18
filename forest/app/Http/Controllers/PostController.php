@@ -59,7 +59,7 @@ class PostController extends Controller
         
         $sum = $request->sum_x + $request->sum_y;
 
-        dump($sum);
+        // dump($sum);
 
         // $request->session()->put('sum_result', $sum);
 

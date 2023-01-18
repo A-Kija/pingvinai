@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class ZooController extends Controller
 {
+    
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+    
     public function enter(Request $request, $id, $a)
     {
         // dump($request);

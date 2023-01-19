@@ -94,6 +94,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
+        // dar grisim cia
         $type->delete();
         return redirect()->route('types-index');
     }

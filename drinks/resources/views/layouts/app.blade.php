@@ -90,5 +90,6 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.svg')
 </body>
 </html>

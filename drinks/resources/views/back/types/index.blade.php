@@ -16,7 +16,11 @@
                                 <div class="list-table__content">
                                     <h3>{{$type->title}}</h3>
                                     @if($type->is_alk)
-                                    <div class="alk"></div>
+                                    <div class="alk">
+                                        <svg>
+                                            <use xlink:href="#glass"></use>
+                                        </svg>
+                                    </div>
                                     @endif
                                 </div>
                                 <div class="list-table__buttons">

@@ -10,6 +10,11 @@ label {
     }
 }
 
+h1 {
+    font-family: $sa;
+    font-weight: 900;
+}
+
 a.btn,
 button.btn[type=submit] {
     font-size: 1.4em;
@@ -43,9 +48,11 @@ button.btn[type=submit] {
             width: 30%;
         }
         .alk {
-            width: 30px;
-            height: 30px;
-            background-color: brown;
+            svg {
+                width: 40px;
+                height: 40px;
+                fill: darkcyan;
+            }
         }
     }
     &__buttons {

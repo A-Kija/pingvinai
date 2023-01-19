@@ -14,7 +14,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all()->sortBy('title');
+        return view('back.types.index', [
+            'types' => $types
+        ]);
     }
 
     /**
@@ -62,7 +65,9 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('back.types.edit', [
+            'type' => $type
+        ]);
     }
 
     /**
@@ -74,7 +79,11 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $type->title = $request->type_title;
+        $type->is_alk = $request->is_alk ?? 0;
+        $type->save();
+
+        return redirect()->route('types-index');
     }
 
     /**
@@ -85,6 +94,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('types-index');
     }
 }

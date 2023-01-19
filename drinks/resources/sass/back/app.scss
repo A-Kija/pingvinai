@@ -10,9 +10,10 @@ label {
     }
 }
 
+a.btn,
 button.btn[type=submit] {
     font-size: 1.4em;
-    margin-top: 20px;
+    margin: 0 0 0 10px;
     text-transform: uppercase;
     font-weight: 300;
     // font-family: $sa;
@@ -23,5 +24,33 @@ button.btn[type=submit] {
     input[type=checkbox] {
         position: relative;
         top: 5px;
+    }
+}
+
+.list-table {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 80%;
+        h3 {
+            font-family: $sa;
+            font-size: 1.8em;
+            width: 30%;
+        }
+        .alk {
+            width: 30px;
+            height: 30px;
+            background-color: brown;
+        }
+    }
+    &__buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 }

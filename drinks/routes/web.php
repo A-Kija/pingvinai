@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TypeController as T;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix('admin/types')->name('types-')->group(function () {
+    Route::get('/', [T::class, 'index'])->name('index');
+    Route::get('/create', [T::class, 'create'])->name('create');
+    Route::post('/create', [T::class, 'store'])->name('store');
+    Route::get('/edit/{type}', [T::class, 'edit'])->name('edit');
+    Route::put('/edit/{type}', [T::class, 'update'])->name('update');
+    Route::delete('/delete/{type}', [T::class, 'destroy'])->name('delete');
 });
+
+
 
 Auth::routes();
 

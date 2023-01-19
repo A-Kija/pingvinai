@@ -1,8 +1,27 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+label {
+    font-size: 1.4em;
+    user-select: none;
+    &.pointer {
+        cursor: pointer;
+    }
+}
+
+button.btn[type=submit] {
+    font-size: 1.4em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 300;
+    // font-family: $sa;
+}
+
+.form-check {
+    position: relative;
+    input[type=checkbox] {
+        position: relative;
+        top: 5px;
+    }
+}

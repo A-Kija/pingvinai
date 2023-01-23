@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Drink extends Model
 {
     use HasFactory;
+
+    public function drinkType()
+    {
+        return $this->belongsTo(Type::class, 'type_id', 'id');
+    }
+
 }

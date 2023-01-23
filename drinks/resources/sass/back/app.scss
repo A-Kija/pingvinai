@@ -13,6 +13,7 @@ label {
 h1 {
     font-family: $sa;
     font-weight: 900;
+    color: skyblue;
 }
 
 a.btn,
@@ -45,7 +46,7 @@ button.btn[type=submit] {
         h3 {
             font-family: $sa;
             font-size: 1.8em;
-            width: 30%;
+            width: 40%;
         }
         .alk {
             svg {
@@ -53,6 +54,33 @@ button.btn[type=submit] {
                 height: 40px;
                 fill: darkcyan;
             }
+        }
+        .no-alk {
+            width: 40px;
+            height: 40px;
+        }
+        .size {
+            font-size: 1.8em;
+            width: 10%;
+            text-align: center;
+        }
+        .price {
+            font-size: 1.6em;
+            width: 10%;
+            text-align: center;
+            font-weight: 300;
+        }
+        .count {
+            font-size: 1.6em;
+            width: 10%;
+            text-align: center;
+            font-weight: 300;
+            color: coral;
+        }
+        .type {
+            font-size: 1.6em;
+            width: 30%;
+            font-weight: 400;
         }
     }
     &__buttons {

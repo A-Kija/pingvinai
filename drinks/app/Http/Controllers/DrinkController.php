@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Drink;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class DrinkController extends Controller
@@ -14,7 +15,11 @@ class DrinkController extends Controller
      */
     public function index()
     {
-        //
+        $drinks = Drink::all()->sortBy('price');
+
+        return view('back.drinks.index', [
+            'drinks' => $drinks
+        ]);
     }
 
     /**
@@ -24,7 +29,10 @@ class DrinkController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all()->sortBy('title');
+        return view('back.drinks.create', [
+            'types' => $types
+        ]);
     }
 
     /**
@@ -35,7 +43,18 @@ class DrinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $drink = new Drink;
+
+        $drink->title = $request->drink_title;
+        $drink->type_id = $request->type_id;
+        $drink->size = $request->drink_size;
+        $drink->price = $request->drink_price;
+        $drink->vol = $request->drink_vol;
+
+        $drink->save();
+
+        return redirect()->route('drinks-index');
+
     }
 
     /**

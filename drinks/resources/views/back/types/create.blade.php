@@ -12,10 +12,11 @@
                     <form action="{{route('types-store')}}" method="post">
                         <div class="mb-3">
                             <label class="form-label">Type title</label>
-                            <input type="text" class="form-control" name="type_title">
+                            <input type="text" class="form-control" name="type_title" value="{{old('type_title')}}">
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="type-alk" name="is_alk">
+                            <input class="form-check-input" type="checkbox" value="1" id="type-alk"
+                             name="is_alk" @if(old('is_alk')) checked @endif>
                             <label class="form-check-label pointer" for="type-alk">
                                 Is Alk
                             </label>

@@ -15,8 +15,10 @@ if (document.querySelector('#drink--create--edit')) {
         const el = document.querySelector('#drink--vol');
         if (ids.includes(id)) {
             el.style.display = 'block';
+            el.querySelector('input').setAttribute('name', 'drink_vol')
         } else {
             el.style.display = 'none';
+            el.querySelector('input').removeAttribute('name');
         }
     }
 

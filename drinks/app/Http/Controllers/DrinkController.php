@@ -14,12 +14,48 @@ class DrinkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $drinks = Drink::all()->sortBy('price');
+        
+
+        if ($request->type_id && $request->type_id != 'all') {
+            $drinks = Drink::where('type_id', $request->type_id);
+        }
+        else {
+            $drinks = Drink::where('id', '>', 0);
+        } 
+                
+        $drinks = match($request->sort ?? '') {
+            'asc_name' => $drinks->orderBy('title'),
+            'desc_name' => $drinks->orderBy('title', 'desc'),
+            'asc_size' => $drinks->orderBy('size'),
+            'desc_size' => $drinks->orderBy('size', 'desc'),
+            default => $drinks
+        };
+
+
+
+        $perPageShow = in_array($request->per_page, Drink::PER_PAGE) ? $request->per_page : 'all';
+        if ($perPageShow == 'all') {
+            $drinks = $drinks->get();
+        } else {
+            $drinks = $drinks->paginate($perPageShow)->withQueryString();
+        }
+        
+    
+        // $drinks = Drink::all()->sortBy('price');
+        // $drinks = Drink::all()->sortByDesc('price');
+
+        $types = Type::all()->sortBy('title');
 
         return view('back.drinks.index', [
-            'drinks' => $drinks
+            'drinks' => $drinks,
+            'sortSelect' => Drink::SORT,
+            'sortShow' => isset(Drink::SORT[$request->sort]) ? $request->sort : '',
+            'perPageSelect' => Drink::PER_PAGE,
+            'perPageShow' => $perPageShow,
+            'types' => $types,
+            'typeShow' => $request->type_id ? $request->type_id : ''
         ]);
     }
 
@@ -160,6 +196,6 @@ class DrinkController extends Controller
     public function destroy(Drink $drink)
     {
         $drink->delete();
-        return redirect()->route('drinks-index')->with('ok', 'Drink was deleted');
+        return redirect()->back()->with('ok', 'Drink was deleted');
     }
 }

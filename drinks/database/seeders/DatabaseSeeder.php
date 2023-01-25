@@ -30,20 +30,37 @@ class DatabaseSeeder extends Seeder
 
         $faker = Faker::create();
 
-        foreach(range(1, 26) as $i) {
+        foreach(range(1, 10) as $i) {
             DB::table('types')->insert([
                 'title' => $faker->cityPrefix . ' ' . $faker->domainWord ,
-                'is_alk' => $i % 3 ? 1 : 0
+                'is_alk' => 1
             ]);
         }
 
-        foreach(range(1, 300) as $i) {
+        foreach(range(11, 30) as $i) {
+            DB::table('types')->insert([
+                'title' => $faker->cityPrefix . ' ' . $faker->domainWord ,
+                'is_alk' => 0
+            ]);
+        }
+
+        foreach(range(1, 100) as $i) {
             DB::table('drinks')->insert([
                 'title' => $faker->colorName . ' ' . $faker->domainWord,
-                'vol' => $i % 3 ? (rand(1, 999) / 10) : null,
+                'vol' => rand(1, 999) / 10,
                 'size' => rand(1, 9999),
                 'price' => (rand(1, 9999) / 10),
-                'type_id' => rand(1, 26)
+                'type_id' => rand(1, 10)
+            ]);
+        }
+
+        foreach(range(1, 200) as $i) {
+            DB::table('drinks')->insert([
+                'title' => $faker->colorName . ' ' . $faker->domainWord,
+                'vol' => null,
+                'size' => rand(1, 9999),
+                'price' => (rand(1, 9999) / 10),
+                'type_id' => rand(11, 30)
             ]);
         }
 

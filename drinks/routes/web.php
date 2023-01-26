@@ -27,7 +27,7 @@ Route::prefix('admin/types')->name('types-')->group(function () {
 
 Route::prefix('admin/drinks')->name('drinks-')->group(function () {
     Route::get('/', [D::class, 'index'])->name('index');
-    Route::get('/create', [D::class, 'create'])->name('create');
+    Route::get('/create', [D::class, 'create'])->name('create')->middleware('roles');
     Route::post('/create', [D::class, 'store'])->name('store');
     Route::get('/edit/{drink}', [D::class, 'edit'])->name('edit');
     Route::put('/edit/{drink}', [D::class, 'update'])->name('update');

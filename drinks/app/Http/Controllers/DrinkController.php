@@ -17,29 +17,42 @@ class DrinkController extends Controller
     public function index(Request $request)
     {
         
+        $perPageShow = in_array($request->per_page, Drink::PER_PAGE) ? $request->per_page : 'all';
+        if (!$request->s) {
+        
+            if ($request->type_id && $request->type_id != 'all') {
+                $drinks = Drink::where('type_id', $request->type_id);
+            }
+            else {
+                $drinks = Drink::where('id', '>', 0);
+            } 
+                    
+            $drinks = match($request->sort ?? '') {
+                'asc_name' => $drinks->orderBy('title'),
+                'desc_name' => $drinks->orderBy('title', 'desc'),
+                'asc_size' => $drinks->orderBy('size'),
+                'desc_size' => $drinks->orderBy('size', 'desc'),
+                default => $drinks
+            };
 
-        if ($request->type_id && $request->type_id != 'all') {
-            $drinks = Drink::where('type_id', $request->type_id);
+            
+            if ($perPageShow == 'all') {
+                $drinks = $drinks->get();
+            } else {
+                $drinks = $drinks->paginate($perPageShow)->withQueryString();
+            }
         }
         else {
-            $drinks = Drink::where('id', '>', 0);
-        } 
-                
-        $drinks = match($request->sort ?? '') {
-            'asc_name' => $drinks->orderBy('title'),
-            'desc_name' => $drinks->orderBy('title', 'desc'),
-            'asc_size' => $drinks->orderBy('size'),
-            'desc_size' => $drinks->orderBy('size', 'desc'),
-            default => $drinks
-        };
+            $s = explode(' ', $request->s);
 
-
-
-        $perPageShow = in_array($request->per_page, Drink::PER_PAGE) ? $request->per_page : 'all';
-        if ($perPageShow == 'all') {
-            $drinks = $drinks->get();
-        } else {
-            $drinks = $drinks->paginate($perPageShow)->withQueryString();
+            if ( count($s) == 1) {
+                $drinks = Drink::where('title', 'like', '%'.$request->s.'%')->get();
+            }
+            else {
+                $drinks = Drink::where('title', 'like', '%'.$s[0].'%'.$s[1].'%')
+                ->orWhere('title', 'like', '%'.$s[1].'%'.$s[0].'%')
+                ->get();
+            }
         }
         
     
@@ -55,7 +68,8 @@ class DrinkController extends Controller
             'perPageSelect' => Drink::PER_PAGE,
             'perPageShow' => $perPageShow,
             'types' => $types,
-            'typeShow' => $request->type_id ? $request->type_id : ''
+            'typeShow' => $request->type_id ? $request->type_id : '',
+            's' => $request->s ?? ''
         ]);
     }
 

@@ -51,8 +51,8 @@
 
                                 <div class="col-4">
                                     <div class="head-buttons">
-                                        <button type="submit" class="btn btn-outline-primary">Show</button>
-                                        <a href="{{route('drinks-index')}}" class="btn btn-outline-info">Reset</a>
+                                        <button type="submit" class="btn btn-outline-primary mt-3">Show</button>
+                                        <a href="{{route('drinks-index')}}" class="btn btn-outline-info mt-3">Reset</a>
                                     </div>
                                 </div>
 
@@ -60,47 +60,66 @@
                         </div>
                     </form>
 
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        @forelse($drinks as $drink)
-                        <li class="list-group-item">
-                            <div class="list-table">
-                                <div class="list-table__content">
-                                    <h3>{{$drink->title}}</h3>
-                                    @if($drink->vol)
-                                    <div class="alk">
-                                        <svg>
-                                            <use xlink:href="#glass"></use>
-                                        </svg>
+                    <form action="{{route('drinks-index')}}" method="get">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Find drink</label>
+                                        <input type="text" class="form-control" name="s" value="{{$s}}">
                                     </div>
-                                    @else
-                                    <div class="no-alk"></div>
-                                    @endif
-                                    <div class="size"> {{$drink->size}} ml</div>
-                                    <div class="price"> {{$drink->price}}Eur</div>
-                                    <div class="type"> {{$drink->drinkType->title}}</div>
                                 </div>
-                                <div class="list-table__buttons">
-                                    <a href="{{route('drinks-edit', $drink)}}" class="btn btn-outline-success">Edit</a>
-                                    <form action="{{route('drinks-delete', $drink)}}" method="post">
-                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                        @csrf
-                                        @method('delete')
-                                    </form>
+                                <div class="col-4">
+                                    <div class="head-buttons">
+                                        <button type="submit" class="btn btn-outline-primary mt-3">Search</button>
+                                    </div>
                                 </div>
                             </div>
-                        </li>
-                        @empty
-                        <li class="list-group-item">No drinks yet</li>
-                        @endforelse
-                    </ul>
+                        </div>
+                    </form>
                 </div>
+
             </div>
-            @if($perPageShow != 'all')
-            <div class="m-2">{{ $drinks->links() }}</div>
-            @endif
+            <div class="card-body">
+                <ul class="list-group">
+                    @forelse($drinks as $drink)
+                    <li class="list-group-item">
+                        <div class="list-table">
+                            <div class="list-table__content">
+                                <h3>{{$drink->title}}</h3>
+                                @if($drink->vol)
+                                <div class="alk">
+                                    <svg>
+                                        <use xlink:href="#glass"></use>
+                                    </svg>
+                                </div>
+                                @else
+                                <div class="no-alk"></div>
+                                @endif
+                                <div class="size"> {{$drink->size}} ml</div>
+                                <div class="price"> {{$drink->price}}Eur</div>
+                                <div class="type"> {{$drink->drinkType->title}}</div>
+                            </div>
+                            <div class="list-table__buttons">
+                                <a href="{{route('drinks-edit', $drink)}}" class="btn btn-outline-success">Edit</a>
+                                <form action="{{route('drinks-delete', $drink)}}" method="post">
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    @empty
+                    <li class="list-group-item">No drinks yet</li>
+                    @endforelse
+                </ul>
+            </div>
         </div>
+        @if($perPageShow != 'all')
+        <div class="m-2">{{ $drinks->links() }}</div>
+        @endif
     </div>
+</div>
 </div>
 @endsection

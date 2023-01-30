@@ -102,11 +102,13 @@
                             </div>
                             <div class="list-table__buttons">
                                 <a href="{{route('drinks-edit', $drink)}}" class="btn btn-outline-success">Edit</a>
+                                @if(Auth::user()?->role == 'admin')
                                 <form action="{{route('drinks-delete', $drink)}}" method="post">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                     @csrf
                                     @method('delete')
                                 </form>
+                                @endif
                             </div>
                         </div>
                     </li>

@@ -17,21 +17,21 @@ use App\Http\Controllers\DrinkController as D;
 
 
 Route::prefix('admin/types')->name('types-')->group(function () {
-    Route::get('/', [T::class, 'index'])->name('index');
-    Route::get('/create', [T::class, 'create'])->name('create');
-    Route::post('/create', [T::class, 'store'])->name('store');
-    Route::get('/edit/{type}', [T::class, 'edit'])->name('edit');
-    Route::put('/edit/{type}', [T::class, 'update'])->name('update');
-    Route::delete('/delete/{type}', [T::class, 'destroy'])->name('delete');
+    Route::get('/', [T::class, 'index'])->name('index')->middleware('roles:A|M');
+    Route::get('/create', [T::class, 'create'])->name('create')->middleware('roles:A');
+    Route::post('/create', [T::class, 'store'])->name('store')->middleware('roles:A');
+    Route::get('/edit/{type}', [T::class, 'edit'])->name('edit')->middleware('roles:A');
+    Route::put('/edit/{type}', [T::class, 'update'])->name('update')->middleware('roles:A');
+    Route::delete('/delete/{type}', [T::class, 'destroy'])->name('delete')->middleware('roles:A');
 });
 
 Route::prefix('admin/drinks')->name('drinks-')->group(function () {
-    Route::get('/', [D::class, 'index'])->name('index');
-    Route::get('/create', [D::class, 'create'])->name('create')->middleware('roles');
-    Route::post('/create', [D::class, 'store'])->name('store');
-    Route::get('/edit/{drink}', [D::class, 'edit'])->name('edit');
-    Route::put('/edit/{drink}', [D::class, 'update'])->name('update');
-    Route::delete('/delete/{drink}', [D::class, 'destroy'])->name('delete');
+    Route::get('/', [D::class, 'index'])->name('index')->middleware('roles:A|M');
+    Route::get('/create', [D::class, 'create'])->name('create')->middleware('roles:A');
+    Route::post('/create', [D::class, 'store'])->name('store')->middleware('roles:A');
+    Route::get('/edit/{drink}', [D::class, 'edit'])->name('edit')->middleware('roles:A|M');
+    Route::put('/edit/{drink}', [D::class, 'update'])->name('update')->middleware('roles:A|M');
+    Route::delete('/delete/{drink}', [D::class, 'destroy'])->name('delete')->middleware('roles:A');
 });
 
 

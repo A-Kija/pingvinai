@@ -37,28 +37,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
 
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Types
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('types-index') }}">Types List</a>
-                                <a class="dropdown-item" href="{{ route('types-create') }}">New Type</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Drinks
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('drinks-index') }}">Drinks List</a>
-                                <a class="dropdown-item" href="{{ route('drinks-create') }}">New Drink</a>
-                            </div>
-                        </li>
-
-
-
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -73,6 +51,29 @@
                         </li>
                         @endif
                         @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Types
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('types-index') }}">Types List</a>
+                                @if(Auth::user()?->role == 'admin')
+                                <a class="dropdown-item" href="{{ route('types-create') }}">New Type</a>
+                                @endif
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Drinks
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('drinks-index') }}">Drinks List</a>
+                                @if(Auth::user()?->role == 'admin')
+                                <a class="dropdown-item" href="{{ route('drinks-create') }}">New Drink</a>
+                                @endif
+                            </div>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}

@@ -27,12 +27,14 @@
                                     <div class="count">[{{$type->typeDrinks()->count()}}]</div>
                                 </div>
                                 <div class="list-table__buttons">
+                                    @if(Auth::user()?->role == 'admin')
                                     <a href="{{route('types-edit', $type)}}" class="btn btn-outline-success">Edit</a>
                                     <form action="{{route('types-delete', $type)}}" method="post">
                                         <button type="submit" class="btn btn-outline-danger">Delete</button>
                                         @csrf
                                         @method('delete')
                                     </form>
+                                    @endif
                                 </div>
                             </div>
                         </li>

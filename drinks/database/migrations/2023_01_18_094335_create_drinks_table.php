@@ -21,6 +21,7 @@ return new class extends Migration
             $table->decimal('price', 5, 2)->unsigned();
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
+            $table->string('photo', 200)->nullable();
             $table->timestamps();
         });
     }

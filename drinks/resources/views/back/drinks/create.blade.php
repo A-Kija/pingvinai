@@ -9,7 +9,7 @@
                     <h1>Add new drink</h1>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('drinks-store')}}" method="post">
+                    <form action="{{route('drinks-store')}}" method="post" enctype="multipart/form-data">
                         <div class="container">
                             <div class="row">
 
@@ -52,6 +52,13 @@
                                     </div>
                                 </div>
 
+                                <div class="col-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Drink Photo</label>
+                                        <input type="file" class="form-control" name="photo">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -63,5 +70,8 @@
         </div>
     </div>
 </div>
-<script>const alkIds = '{{$alkIds}}'; </script>
+<script>
+    const alkIds = '{{$alkIds}}';
+
+</script>
 @endsection

@@ -116,6 +116,29 @@ class DrinkController extends Controller
         
         $drink = new Drink;
 
+
+        if ($request->file('photo')) {
+            $photo = $request->file('photo');
+
+            dump($photo);
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // $Image = Image::make($photo)->pixelate(12);
+            // $Image->save(public_path().'/trucks/'.$file);
+
+            $photo->move(public_path().'/drinks', $file);
+
+            $drink->photo = '/drinks/' . $file;
+
+        }
+
+       
+
+
+
         $type = Type::find($request->type_id);
         $vol = $type->is_alk ? $request->drink_vol : null;
 

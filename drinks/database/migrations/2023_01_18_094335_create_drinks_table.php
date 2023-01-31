@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
             $table->string('photo', 200)->nullable();
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }

@@ -108,6 +108,7 @@
                                 
                             </div>
                             <div class="list-table__buttons">
+                                <a href="{{route('drinks-show', $drink)}}" class="btn btn-outline-primary">Show</a>
                                 <a href="{{route('drinks-edit', $drink)}}" class="btn btn-outline-success">Edit</a>
                                 @if(Auth::user()?->role == 'admin')
                                 <form action="{{route('drinks-delete', $drink)}}" method="post">

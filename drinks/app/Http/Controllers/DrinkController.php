@@ -6,6 +6,7 @@ use App\Models\Drink;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DrinkController extends Controller
 {
@@ -145,6 +146,7 @@ class DrinkController extends Controller
         $drink->type_id = $request->type_id;
         $drink->size = $request->drink_size;
         $drink->price = $request->drink_price;
+        $drink->desc = $request->drink_desc;
         $drink->vol = $vol;
 
         $drink->save();
@@ -161,7 +163,7 @@ class DrinkController extends Controller
      */
     public function show(Drink $drink)
     {
-        //
+        return view('back.drinks.show', ['drink' => $drink]);
     }
 
     /**
@@ -198,9 +200,7 @@ class DrinkController extends Controller
             $drink->deletePhoto();
             return redirect()->back()->with('ok', 'Photo was deleted');
         }
-        
-        
-        
+       
         
         $validator = Validator::make(
             $request->all(),
@@ -242,6 +242,7 @@ class DrinkController extends Controller
         $drink->type_id = $request->type_id;
         $drink->size = $request->drink_size;
         $drink->price = $request->drink_price;
+        $drink->desc = $request->drink_desc;
         $drink->vol = $vol;
 
         $drink->save();
@@ -260,4 +261,12 @@ class DrinkController extends Controller
         $drink->delete();
         return redirect()->back()->with('ok', 'Drink was deleted');
     }
+
+
+    public function pdf(Drink $drink)
+    {
+        $pdf = Pdf::loadView('back.drinks.pdf', ['drink' => $drink]);
+        return $pdf->download($drink->title.'.pdf');
+    }
+
 }

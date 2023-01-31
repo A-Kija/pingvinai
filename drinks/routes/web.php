@@ -27,6 +27,8 @@ Route::prefix('admin/types')->name('types-')->group(function () {
 
 Route::prefix('admin/drinks')->name('drinks-')->group(function () {
     Route::get('/', [D::class, 'index'])->name('index')->middleware('roles:A|M');
+    Route::get('/show/{drink}', [D::class, 'show'])->name('show')->middleware('roles:A|M');
+    Route::get('/pdf/{drink}', [D::class, 'pdf'])->name('pdf')->middleware('roles:A|M');
     Route::get('/create', [D::class, 'create'])->name('create')->middleware('roles:A');
     Route::post('/create', [D::class, 'store'])->name('store')->middleware('roles:A');
     Route::get('/edit/{drink}', [D::class, 'edit'])->name('edit')->middleware('roles:A|M');

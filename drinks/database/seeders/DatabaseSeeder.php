@@ -52,7 +52,8 @@ class DatabaseSeeder extends Seeder
                 'vol' => rand(1, 999) / 10,
                 'size' => rand(1, 9999),
                 'price' => (rand(1, 9999) / 10),
-                'type_id' => rand(1, 10)
+                'type_id' => rand(1, 10),
+                'desc' => $faker->realText(500, 5)
             ]);
         }
 
@@ -62,7 +63,8 @@ class DatabaseSeeder extends Seeder
                 'vol' => null,
                 'size' => rand(1, 9999),
                 'price' => (rand(1, 9999) / 10),
-                'type_id' => rand(11, 30)
+                'type_id' => rand(11, 30),
+                'desc' => $faker->realText(500, 5)
             ]);
         }
 

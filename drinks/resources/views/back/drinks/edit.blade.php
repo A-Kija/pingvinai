@@ -60,12 +60,19 @@
                                 </div>
 
                                 @if($drink->photo)
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div class="mb-3 img">
                                         <img src="{{asset($drink->photo)}}">
                                     </div>
                                 </div>
                                 @endif
+
+                                <div class="col-8">
+                                    <div class="mb-3">
+                                        <label class="form-label">Drink description</label>
+                                        <textarea class="form-control" rows="10" name="drink_desc">{{old('drink_desc', $drink->desc)}}</textarea>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -79,7 +86,7 @@
                     </form>
 
 
-                    
+
                 </div>
             </div>
         </div>

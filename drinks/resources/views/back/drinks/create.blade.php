@@ -59,6 +59,12 @@
                                     </div>
                                 </div>
 
+                                <div class="col-9">
+                                    <div class="mb-3">
+                                        <label class="form-label">Drink description</label>
+                                        <textarea class="form-control" rows="10" name="drink_desc">{{old('drink_desc')}}</textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

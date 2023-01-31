@@ -99,6 +99,13 @@
                                 <div class="size"> {{$drink->size}} ml</div>
                                 <div class="price"> {{$drink->price}}Eur</div>
                                 <div class="type"> {{$drink->drinkType->title}}</div>
+                                
+                                <div class="smallimg">
+                                    @if($drink->photo)
+                                    <img src="{{asset($drink->photo)}}">
+                                    @endif
+                                </div>
+                                
                             </div>
                             <div class="list-table__buttons">
                                 <a href="{{route('drinks-edit', $drink)}}" class="btn btn-outline-success">Edit</a>

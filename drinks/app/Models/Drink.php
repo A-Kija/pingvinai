@@ -25,4 +25,14 @@ class Drink extends Model
         return $this->belongsTo(Type::class, 'type_id', 'id');
     }
 
+    public function deletePhoto()
+    {
+        $fileName = $this->photo;
+        if (file_exists(public_path().$fileName)) {
+            unlink(public_path().$fileName);
+        }
+        $this->photo = null;
+        $this->save();
+    }
+
 }

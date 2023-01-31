@@ -98,6 +98,7 @@ class DrinkController extends Controller
      */
     public function store(Request $request)
     {
+
         
         $validator = Validator::make(
             $request->all(),
@@ -119,8 +120,6 @@ class DrinkController extends Controller
 
         if ($request->file('photo')) {
             $photo = $request->file('photo');
-
-            dump($photo);
 
             $ext = $photo->getClientOriginalExtension();
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
@@ -195,10 +194,18 @@ class DrinkController extends Controller
     public function update(Request $request, Drink $drink)
     {
         
+        if ($request->delete_photo) {
+            $drink->deletePhoto();
+            return redirect()->back()->with('ok', 'Photo was deleted');
+        }
+        
+        
+        
+        
         $validator = Validator::make(
             $request->all(),
             [
-            'drink_title' => 'required|alpha|min:3|max:100',
+            'drink_title' => 'required|min:3|max:100',
             'drink_size' => 'required|min:1|max:9999',
             'drink_price' => 'required|decimal:0,2|min:0|max:999',
             'type_id' => 'required|numeric|min:1',
@@ -212,6 +219,24 @@ class DrinkController extends Controller
 
         $type = Type::find($request->type_id);
         $vol = $type->is_alk ? $request->drink_vol : null;
+
+        if ($request->file('photo')) {
+            $photo = $request->file('photo');
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // $Image = Image::make($photo)->pixelate(12);
+            // $Image->save(public_path().'/trucks/'.$file);
+
+            if ($drink->photo) {
+                $drink->deletePhoto();
+            }
+            $photo->move(public_path().'/drinks', $file);
+            $drink->photo = '/drinks/' . $file;
+        }
+
         
         $drink->title = $request->drink_title;
         $drink->type_id = $request->type_id;

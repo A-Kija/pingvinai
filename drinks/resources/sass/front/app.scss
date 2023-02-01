@@ -1,0 +1,29 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+.list-table {
+    margin: 7px;
+    padding: 7px;
+    border: 1px solid cornflowerblue;
+    h3 {
+        font-size: 1.5em;
+        color: $primary;
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: $primary;
+        }
+    }
+    .smallimg {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 100%;
+            max-width: 220px;
+            height: auto;
+        }
+    }
+}

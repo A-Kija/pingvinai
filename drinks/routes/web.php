@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController as T;
 use App\Http\Controllers\DrinkController as D;
+use App\Http\Controllers\FrontController as F;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use App\Http\Controllers\DrinkController as D;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [F::class, 'home'])->name('home');
 
 
 Route::prefix('admin/types')->name('types-')->group(function () {
@@ -35,6 +38,8 @@ Route::prefix('admin/drinks')->name('drinks-')->group(function () {
     Route::put('/edit/{drink}', [D::class, 'update'])->name('update')->middleware('roles:A|M');
     Route::delete('/delete/{drink}', [D::class, 'destroy'])->name('delete')->middleware('roles:A');
 });
+
+
 
 
 

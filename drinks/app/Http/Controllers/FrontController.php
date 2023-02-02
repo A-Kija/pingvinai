@@ -9,10 +9,17 @@ class FrontController extends Controller
 {
     public function home()
     {
-        $drinks = Drink::all();
+        $drinks = Drink::paginate(21);
 
         return view('front.home', [
             'drinks' => $drinks
+        ]);
+    }
+
+    public function showDrink(Drink $drink)
+    {
+        return view('front.drink', [
+            'drink' => $drink
         ]);
     }
 }

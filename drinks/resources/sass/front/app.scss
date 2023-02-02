@@ -8,6 +8,10 @@
     margin: 7px;
     padding: 7px;
     border: 1px solid cornflowerblue;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 14px);
+    justify-content: space-between;
     h3 {
         font-size: 1.5em;
         color: $primary;
@@ -24,6 +28,37 @@
             width: 100%;
             max-width: 220px;
             height: auto;
+        }
+    }
+    .info,
+    .buy {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .price {
+        font-size: 2em;
+        color: crimson;
+    }
+    &.one {
+        border: none;
+        .smallimg {
+            img {
+                width: 100%;
+                height: auto;
+                max-width: 400px;
+            }
+        }
+        h3 {
+            font-size: 3em;
+            color: $primary;
+            text-align: center;
+            svg {
+                width: 40px;
+                height: 40px;
+                fill: $primary;
+            }
         }
     }
 }

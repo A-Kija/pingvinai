@@ -10,9 +10,8 @@
             <div class="card-body">
                 <div class="container">
                     <div class="row justify-content-center">
-                        @forelse($drinks as $drink)
-                        <div class="col-4">
-                            <div class="list-table">
+                        <div class="col-12">
+                            <div class="list-table one">
                                 <div class="top">
                                     <h3>
                                         @if($drink->vol)
@@ -22,7 +21,6 @@
                                         @endif
                                         {{$drink->title}}
                                     </h3>
-                                    <a href="{{route('show-drink', $drink)}}">
                                     <div class="smallimg">
                                         @if($drink->photo)
                                         <img src="{{asset($drink->photo)}}">
@@ -30,7 +28,6 @@
                                         <img src="{{asset('no.jpg')}}">
                                         @endif
                                     </div>
-                                    </a>
                                 </div>
                                 <div class="bottom">
                                     <div class="info">
@@ -44,13 +41,9 @@
                                 </div>
                             </div>
                         </div>
-                        @empty
-                        No drinks yet
-                        @endforelse
                     </div>
                 </div>
             </div>
-            <div class="m-2">{{ $drinks->links() }}</div>
         </div>
     </div>
 </div>

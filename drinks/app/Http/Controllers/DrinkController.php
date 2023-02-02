@@ -7,6 +7,7 @@ use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Intervention\Image\ImageManager;
 
 class DrinkController extends Controller
 {
@@ -126,10 +127,14 @@ class DrinkController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
-            // $Image = Image::make($photo)->pixelate(12);
-            // $Image->save(public_path().'/trucks/'.$file);
+            $manager = new ImageManager(['driver' => 'GD']);
 
-            $photo->move(public_path().'/drinks', $file);
+            $image = $manager->make($photo);
+            $image->crop(400, 600);
+            $image->save(public_path().'/drinks/'.$file);
+            
+
+            // $photo->move(public_path().'/drinks', $file);
 
             $drink->photo = '/drinks/' . $file;
 
@@ -227,13 +232,20 @@ class DrinkController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
-            // $Image = Image::make($photo)->pixelate(12);
-            // $Image->save(public_path().'/trucks/'.$file);
+            $manager = new ImageManager(['driver' => 'GD']);
+
+            $image = $manager->make($photo);
+            $image->crop(400, 600);
+
+            // $photo->move(public_path().'/drinks', $file);
+
+            // $drink->photo = '/drinks/' . $file;
 
             if ($drink->photo) {
                 $drink->deletePhoto();
             }
-            $photo->move(public_path().'/drinks', $file);
+            // $photo->move(public_path().'/drinks', $file);
+            $image->save(public_path().'/drinks/'.$file);
             $drink->photo = '/drinks/' . $file;
         }
 

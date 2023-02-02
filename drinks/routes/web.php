@@ -17,6 +17,7 @@ use App\Http\Controllers\FrontController as F;
 */
 
 Route::get('/', [F::class, 'home'])->name('home');
+Route::get('/drink/{drink}', [F::class, 'showDrink'])->name('show-drink');
 
 
 Route::prefix('admin/types')->name('types-')->group(function () {

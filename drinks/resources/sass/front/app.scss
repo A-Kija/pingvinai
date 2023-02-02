@@ -61,4 +61,34 @@
             }
         }
     }
+    &.cats {
+        border: none;
+        a {
+            text-decoration: none;
+            h3 {
+                font-size: 2em;
+                color: $primary;
+                text-align: center;
+                svg {
+                    width: 30px;
+                    height: 30px;
+                    fill: $primary;
+                }
+                .count {
+                    font-size: 0.7em;
+                    color: skyblue;
+                }
+            }
+        }
+    }
+    [type=number] {
+        width: 50px;
+        border: 1px solid $primary;
+        outline: none;
+    }
+}
+
+.logo {
+    height: 70px;
+    width: auto;
 }

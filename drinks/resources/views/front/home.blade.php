@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-3">
-            cats
+            @include('front.common.cats')
         </div>
         <div class="col-9">
             <div class="card-body">
@@ -39,7 +39,12 @@
                                     </div>
                                     <div class="buy">
                                         <div class="price"> {{$drink->price}}Eur</div>
+                                        <form action="{{route('add-to-cart')}}" method="post">
                                         <button type="submit" class="btn btn-outline-primary">Add</button>
+                                        <input type="number" min="1" name="count" value="1">
+                                        <input type="hidden" name="product" value="{{$drink->id}}">
+                                        @csrf
+                                        <form>
                                     </div>
                                 </div>
                             </div>

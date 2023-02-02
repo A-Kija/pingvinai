@@ -16,8 +16,11 @@ use App\Http\Controllers\FrontController as F;
 |
 */
 
-Route::get('/', [F::class, 'home'])->name('home');
+Route::get('/', [F::class, 'home'])->name('start');
 Route::get('/drink/{drink}', [F::class, 'showDrink'])->name('show-drink');
+Route::get('/cat/{type}', [F::class, 'showCatDrinks'])->name('show-cats-drinks');
+Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart');
+
 
 
 Route::prefix('admin/types')->name('types-')->group(function () {
@@ -44,6 +47,6 @@ Route::prefix('admin/drinks')->name('drinks-')->group(function () {
 
 
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

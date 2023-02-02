@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\CatsService;
 
 class CatsServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class CatsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(CatsService::class, function ($app) {
+            return new CatsService();
+        });
     }
 
     /**

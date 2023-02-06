@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Drink;
 use App\Models\Type;
+use App\Services\CartService;
 
 class FrontController extends Controller
 {
@@ -33,18 +34,26 @@ class FrontController extends Controller
         ]);
     }
 
-    public function addToCart(Request $request)
+    public function addToCart(Request $request, CartService $cart)
     {
-        $cart = $request->session()->get('cart', []);
         $id = (int) $request->product;
         $count = (int) $request->count;
-        if (isset($cart[$id])) {
-            $cart[$id] += $count;
-        }
-        else {
-            $cart[$id] = $count;
-        }
-        $request->session()->put('cart', $cart);
+        $cart->add($id, $count);
+        return redirect()->back();
+    }
+
+    public function cart(CartService $cart)
+    {
+        return view('front.cart', [
+            'cartList' => $cart->list
+        ]);
+    }
+
+    public function updateCart(Request $request, CartService $cart)
+    {
+       
+        $updatedCart = array_combine($request->ids ?? [], $request->count ?? []);
+        $cart->update($updatedCart);
         return redirect()->back();
     }
 }

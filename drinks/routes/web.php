@@ -20,6 +20,8 @@ Route::get('/', [F::class, 'home'])->name('start');
 Route::get('/drink/{drink}', [F::class, 'showDrink'])->name('show-drink');
 Route::get('/cat/{type}', [F::class, 'showCatDrinks'])->name('show-cats-drinks');
 Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart');
+Route::get('/cart', [F::class, 'cart'])->name('cart');
+Route::post('/cart', [F::class, 'updateCart'])->name('update-cart');
 
 
 

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-3">
-            cats
+            @include('front.common.cats')
         </div>
         <div class="col-9">
             <div class="card-body">

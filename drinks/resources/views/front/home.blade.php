@@ -44,7 +44,7 @@
                                         <input type="number" min="1" name="count" value="1">
                                         <input type="hidden" name="product" value="{{$drink->id}}">
                                         @csrf
-                                        <form>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

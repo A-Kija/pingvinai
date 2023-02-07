@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController as T;
 use App\Http\Controllers\DrinkController as D;
 use App\Http\Controllers\FrontController as F;
+use App\Http\Controllers\OrderController as O;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/cat/{type}', [F::class, 'showCatDrinks'])->name('show-cats-drinks')
 Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart');
 Route::get('/cart', [F::class, 'cart'])->name('cart');
 Route::post('/cart', [F::class, 'updateCart'])->name('update-cart');
-
+Route::post('/make-order', [F::class, 'makeOrder'])->name('make-order');
 
 
 Route::prefix('admin/types')->name('types-')->group(function () {
@@ -43,6 +44,12 @@ Route::prefix('admin/drinks')->name('drinks-')->group(function () {
     Route::get('/edit/{drink}', [D::class, 'edit'])->name('edit')->middleware('roles:A|M');
     Route::put('/edit/{drink}', [D::class, 'update'])->name('update')->middleware('roles:A|M');
     Route::delete('/delete/{drink}', [D::class, 'destroy'])->name('delete')->middleware('roles:A');
+});
+
+Route::prefix('admin/orders')->name('orders-')->group(function () {
+    Route::get('/', [O::class, 'index'])->name('index')->middleware('roles:A|M');
+    Route::put('/edit/{order}', [O::class, 'update'])->name('update')->middleware('roles:A');
+    Route::delete('/delete/{order}', [O::class, 'destroy'])->name('delete')->middleware('roles:A');
 });
 
 

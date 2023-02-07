@@ -35,7 +35,7 @@
 
                                     </div>
                                     <div class="list-table__buttons">
-                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                        <button type="submit" name="delete" value="{{$drink->id}}" class="btn btn-outline-danger">Delete</button>
                                     </div>
                                 </div>
                             </li>
@@ -48,6 +48,14 @@
                         </ul>
                         @csrf
                     </form>
+                    <ul class="list-group">
+                    <li class="list-group-item">
+                    <form action="{{route('make-order')}}" method="post">
+                        <button type="submit" class="btn btn-outline-primary">Buy</button>
+                        @csrf
+                    </form>
+                    </li>
+                    </ul>
                 </div>
             </div>
         </div>

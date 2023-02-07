@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -32,8 +35,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        $order->status = 1;
-        $order->save();
+        // $order->status = 1;
+        // $order->save();
+        // $to = User::where('id', 'user_id')->get()[];
+        // $to = User::where('id', 'user_id')->first();
+        $to = User::find($order->user_id);
+        Mail::to($to)->send(new OrderShipped($order));
         return redirect()->back();
     }
 
@@ -45,6 +52,9 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        if ($order->status == 0) {
+            return redirect()->back()->with('not', 'You can not delete unfinished orders');
+        }
         $order->delete();
         return redirect()->back();
     }

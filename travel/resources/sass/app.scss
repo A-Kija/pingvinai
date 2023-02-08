@@ -1,0 +1,17 @@
+// Variables
+@import 'variables';
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+.form-control {
+    color: white;
+    &:focus {
+        color: white;
+    }
+}
+
+.flex-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

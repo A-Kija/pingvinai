@@ -41,7 +41,8 @@ class TravelController extends Controller
         ->render();
 
         return response()->json([
-            'message' => 'Fancy One!',
+            'message' => 'Hotel was added. Fancy One!',
+            'messageType' => 'ok',
             'html' => $html,
             'to' => '--list'
         ]);
@@ -57,6 +58,14 @@ class TravelController extends Controller
     public function edit(Travel $travel)
     {
 
+        $html = view('travel.edit')
+        // ->with(['travels' => $travels])
+        ->render();
+
+        return response()->json([
+            'html' => $html,
+            'to' => '--edit-bin'
+        ]);
 
     }
 
@@ -90,6 +99,7 @@ class TravelController extends Controller
 
         return response()->json([
             'message' => 'Dead One!',
+            'messageType' => 'ok',
             'html' => $html,
             'to' => '--list'
         ]);

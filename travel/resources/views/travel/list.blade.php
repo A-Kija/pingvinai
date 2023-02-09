@@ -10,6 +10,9 @@
                 <button type="button" class="btn btn-outline-secondary" data-url="{{route('travel-delete', $travel)}}" data-method="delete">
                     delete
                 </button>
+                <button type="button" class="btn btn-outline-secondary" data-url="{{route('travel-edit', $travel)}}" data-method="get">
+                    edit
+                </button>
             </div>
         </div>
     </li>

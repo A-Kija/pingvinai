@@ -79,5 +79,7 @@
             @yield('content')
         </main>
     </div>
+    <div class="message-bin"></div>
+    <div id="--edit-bin"></div>
 </body>
 </html>

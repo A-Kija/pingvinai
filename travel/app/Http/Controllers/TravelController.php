@@ -13,12 +13,27 @@ class TravelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $travels = Travel::orderBy('id', 'desc')->get();
+        dump($request->sort);
+        
+        if (!$request->sort) {
+            $travels = Travel::orderBy('id', 'desc')->get();
+        } else {
+            dump('-------',$request->sort);
+            if ($request->sort == 'az') {
+                dump('---',$request->sort);
+                $travels = Travel::orderBy('country')->get();
+            } else {
+                $travels = Travel::orderBy('country', 'desc')->get();
+            }
+        }
+        
         
         return view('travel.index', ['travels' => $travels]);
     }
+
+    
 
 
     /**
@@ -59,7 +74,7 @@ class TravelController extends Controller
     {
 
         $html = view('travel.edit')
-        // ->with(['travels' => $travels])
+        ->with(['travel' => $travel])
         ->render();
 
         return response()->json([
@@ -78,7 +93,25 @@ class TravelController extends Controller
      */
     public function update(Request $request, Travel $travel)
     {
-        //
+        $travel->update([
+            'country' => $request->country,
+            'hotel' => $request->hotel,
+        ]);
+
+        $travels = Travel::orderBy('id', 'desc')->get();
+
+        $html = view('travel.list')
+        ->with(['travels' => $travels])
+        ->render();
+
+        return response()->json([
+            'message' => 'Hotel was Edited. Fancy One!',
+            'messageType' => 'ok',
+            'html' => $html,
+            'to' => '--list',
+            'delete' => '--edit-bin'
+        ]);
+
     }
 
     /**

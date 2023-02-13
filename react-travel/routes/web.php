@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\RacoonController as R;
+use App\Http\Controllers\TravelController as T;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Controllers\RacoonController as R;
 
 Route::get('/meskenas', [R::class, 'show']);
 
+
+Route::get('/travel', [T::class, 'index']);
 
 
 

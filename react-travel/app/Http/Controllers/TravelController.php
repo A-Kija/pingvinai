@@ -5,64 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\Travel;
 use Inertia\Inertia;
 
-use App\Http\Requests\StoreTravelRequest;
-use App\Http\Requests\UpdateTravelRequest;
+use Illuminate\Http\Request;
 
 class TravelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return Inertia::render('Travel/Travel', [
+            'travelsData' => Travel::orderBy('id', 'desc')->get(),
+            'storeUrl' => route('travel-store'),
+            'deleteUrl' => route('travel-delete')
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(Request $request)
     {
-        //
+        sleep(3);
+        $id = Travel::create([
+            'country' => $request->country,
+            'hotel' => $request->hotel,
+        ])->id;
+
+        return response()->json([
+            'message' => 'Hotel was added. Fancy One!',
+            'messageType' => 'ok',
+            'id' => $id
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTravelRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreTravelRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Travel  $travel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Travel $travel)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Travel  $travel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Travel $travel)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -84,6 +55,11 @@ class TravelController extends Controller
      */
     public function destroy(Travel $travel)
     {
-        //
+        $travel->delete();
+        
+        return response()->json([
+            'message' => 'Hotel was removed. Was fancy One!',
+            'messageType' => 'not'
+        ]);
     }
 }

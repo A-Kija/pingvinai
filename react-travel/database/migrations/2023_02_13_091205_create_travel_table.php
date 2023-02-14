@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('country', 100);
+            $table->string('hotel', 100);
         });
     }
 

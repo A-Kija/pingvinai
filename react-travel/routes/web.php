@@ -21,8 +21,9 @@ use App\Http\Controllers\TravelController as T;
 Route::get('/meskenas', [R::class, 'show']);
 
 
-Route::get('/travel', [T::class, 'index']);
-
+Route::get('/travel', [T::class, 'index'])->name('travel-index');
+Route::post('/travel', [T::class, 'store'])->name('travel-store');
+Route::delete('/travel/{travel?}', [T::class, 'destroy'])->name('travel-delete');
 
 
 Route::get('/', function () {

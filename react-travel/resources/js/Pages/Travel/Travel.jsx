@@ -6,11 +6,14 @@ import { v4 as uuidv4 } from 'uuid';
 import Create from './Create';
 import List from './List';
 import Message from './Message';
+import Edit from './Edit';
 
-function Travel({ travelsData, storeUrl, deleteUrl }) {
+function Travel({ travelsData, storeUrl, deleteUrl, updateUrl }) {
 
     const [createData, setCreateData] = useState(null);
     const [deleteData, setDeleteData] = useState(null);
+    const [modalData, setModalData] = useState(null);
+    const [updateData, setUpdateData] = useState(null);
     const [travels, setTravels] = useState([]);
     const [messages, setMessages] = useState([]);
 
@@ -35,7 +38,6 @@ function Travel({ travelsData, storeUrl, deleteUrl }) {
         axios.post(storeUrl, createData)
             .then(res => {
                 showMessage(res.data.message, res.data.messageType);
-                console.log(res.data.id)
                 setTravels(t => t.map(t => t.id !== uuid ? {...t} : {...t, id:res.data.id, hide: false}))
 
             });
@@ -54,7 +56,20 @@ function Travel({ travelsData, storeUrl, deleteUrl }) {
             });
         setTravels(t => t.filter(t => t.id !== deleteData.id));
 
-    }, [deleteData])
+    }, [deleteData]);
+
+
+    useEffect(() => {
+        if (null === updateData) {
+            return;
+        }
+        axios.put(updateUrl + '/' + updateData.id, updateData)
+            .then(res => {
+                showMessage(res.data.message, res.data.messageType);
+            });
+        setTravels(t => t.map(t => t.id === updateData.id ? {...updateData} : {...t}));
+
+    }, [updateData])
 
     return (
         <>
@@ -76,13 +91,14 @@ function Travel({ travelsData, storeUrl, deleteUrl }) {
                                 <h1>Travels list</h1>
                             </div>
                             <div className="card-body">
-                                <List travels={travels} setDeleteData={setDeleteData} />
+                                <List travels={travels} setDeleteData={setDeleteData} setModalData={setModalData} />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <Message messages={messages} />
+            <Edit modalData={modalData} setModalData={setModalData} setUpdateData={setUpdateData}/>
         </>
     );
 }

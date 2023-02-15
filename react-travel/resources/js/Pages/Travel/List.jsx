@@ -1,5 +1,4 @@
-function List({ travels, setDeleteData }) {
-
+function List({ travels, setDeleteData, setModalData }) {
 
     return (
         <ul className="list-group">
@@ -17,7 +16,7 @@ function List({ travels, setDeleteData }) {
                                 onClick={() => setDeleteData(travel)}>
                                     delete
                                 </button>
-                                <button type="button" className="btn btn-outline-secondary m-2">
+                                <button type="button" className="btn btn-outline-secondary m-2" onClick={() => setModalData(travel)}>
                                     edit
                                 </button>
                             </div>

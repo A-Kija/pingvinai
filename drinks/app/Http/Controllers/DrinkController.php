@@ -127,7 +127,7 @@ class DrinkController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
-            $manager = new ImageManager(['driver' => 'GD']);
+            $manager = new ImageManager(['driver' => 'gd']);
 
             $image = $manager->make($photo);
             $image->crop(400, 600);
@@ -232,7 +232,7 @@ class DrinkController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
-            $manager = new ImageManager(['driver' => 'GD']);
+            $manager = new ImageManager(['driver' => 'gd']);
 
             $image = $manager->make($photo);
             $image->crop(400, 600);

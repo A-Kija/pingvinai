@@ -16,8 +16,7 @@ class ApiController extends Controller
 
   
         $products = $products->map(fn($p) => (object)$p);
-
-   
+  
 
         return view('list', ['products' => $products]);
 

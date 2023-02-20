@@ -16,7 +16,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=Sarpanch:wght@400;900&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/front/app.scss', 'resources/js/front/app.js'])
+    {{-- @vite(['resources/sass/front/app.scss', 'resources/js/front/app.js']) --}}
+        {{-- @vite(['resources/sass/back/app.scss', 'resources/js/back/app.js']) --}}
+    <link rel="stylesheet" href="{{asset('build\assets\app-0f22e892.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('build\assets\app-fa1b4628.css')}}"> --}}
+    <script src={{asset('build\assets\app-d5fa8b22.js')}} defer></script>
+    <script src={{asset('build\assets\app-efa1a525.js')}} defer></script>
+    <script src={{asset('build\assets\axios-8fd06c34.js')}} defer></script>
 </head>
 <body>
     <div id="app">
